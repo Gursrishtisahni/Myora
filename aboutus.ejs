@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Myora | About Us</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="/css/about.css">
+</head>
+<body>
+
+  <!-- Header Partial -->
+  <%- include('partials/header_aboutus') %>
+
+  <div class="container">
+    <!-- About Section -->
+    <section class="about-section" id="about">
+      <div class="about-content">
+        <h1>About Myora</h1>
+        <div class="bubble-container">
+          <% aboutPoints.forEach((point) => { %>
+            <div class="bubble"><%= point %></div>
+          <% }) %>
+        </div>
+      </div>
+
+      <!-- Floating Circles -->
+      <div class="decor-circles">
+        <span class="circle"></span>
+        <span class="circle"></span>
+        <span class="circle"></span>
+      </div>
+    </section>
+
+    <!-- Info Boxes -->
+    <section class="about-boxes">
+      <h2 style="text-align: center; margin-bottom: 2rem;">Why Choose Myora?</h2>
+      <div class="box-grid">
+        <% infoBoxes.forEach((box) => { %>
+          <div class="info-box">
+            <h3><%= box.title %></h3>
+            <p><%= box.text %></p>
+          </div>
+        <% }) %>
+      </div>
+    </section>
+
+    <!-- Policies -->
+    <section class="policy-section">
+      <h2 style="text-align: center; margin-bottom: 2rem;">Our Policies</h2>
+      <div class="policy-grid">
+        <% policies.forEach((policy) => { %>
+          <div class="policy-card">
+            <h3><%= policy.title %></h3>
+            <p><%= policy.text %></p>
+            <ul style="margin-top: 1rem; margin-left: 1.5rem;">
+              <% policy.points.forEach((pt) => { %>
+                <li><%= pt %></li>
+              <% }) %>
+            </ul>
+          </div>
+        <% }) %>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer Partial -->
+  <%- include('partials/footer_aboutus') %>
+
+  <!-- Smooth Scroll -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
